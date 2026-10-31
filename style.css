@@ -169,8 +169,23 @@ h3 {
 .bio {
     flex: 1;
     min-width: 0;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     line-height: 1.5;
+}
+
+#about {
+    --ink: #e7e8e9;
+    --bg: #1e1f21;
+    background-color: var(--bg);
+    color: var(--ink);
+}
+
+#about h2 {
+    border-bottom-color: rgba(231, 232, 233, 0.3);
+}
+
+#about .photo {
+    position: relative;
 }
 
 .love-list {
