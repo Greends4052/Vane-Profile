@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rose Vanessa T. Chua | My Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&amp;family=Oswald:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="hero">
+    <div class="viewfinder">
+      <span class="rec" aria-hidden="true"></span>
+      <h1 class="name">Rose Vanessa T. Chua</h1>
+      <p class="tagline">&ldquo;Focus on what you can do&rdquo;</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <h2>About me</h2>
+      <div class="about">
+        <div class="photo"><img src="assets/Vane.png" alt="Portrait of Rose Vanessa T. Chua"></div>
+        <p class="bio">I am 19 years old and a sophomore from BAMS.</p>
+      </div>
+    </section>
+
+    <section class="section" id="love">
+      <h2>Things I love</h2>
+      <ul class="love-list">
+        <li>Cameras</li>
+        <li>Taking pictures</li>
+        <li>Listening to music</li>
+      </ul>
+    </section>
+
+    <section class="section" id="projects">
+      <h2>Passion projects</h2>
+      <div class="film">
+        <!-- Built from Passion_Projects.xml by the script below.
+             This copy is the fallback if the XML cannot be loaded. -->
+        <ol class="film-frames" id="project-list">
+          <li class="project">
+            <img src="assets/1.png" alt="Quiet Frames">
+            <time datetime="2023-09-20">Sep 2023</time>
+            <h3>Quiet Frames</h3>
+            <p>A collection of photos capturing ordinary scenes and small moments from everyday life.</p>
+          </li>
+          <li class="project">
+            <img src="assets/2.png" alt="Rewind Archive">
+            <time datetime="2024-10-02">Oct 2024</time>
+            <h3>Rewind Archive</h3>
+            <p>A series of videos I have been making to preserve memories, moments, and milestones over time.</p>
+          </li>
+          <li class="project">
+            <img src="assets/3.png" alt="Behind the Optics">
+            <time datetime="2025-03-12">Mar 2025</time>
+            <h3>Behind the Optics</h3>
+            <p>Photos taken while covering events as part of Optics, where I capture the people, energy, and highlights of each occasion.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div>
+        <p>Email: <a href="mailto:rtchua2@up.edu.ph">rtchua2@up.edu.ph</a></p>
+        <p>Facebook: <a href="https://www.facebook.com/">Vanessa Chua</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Load the project list from Passion_Projects.xml.
+    // If the file can't be fetched (for example, the page is opened
+    // straight from disk), the fallback list above stays in place.
+    fetch("Passion_Projects.xml")
+      .then(function (res) {
+        if (!res.ok) throw new Error("XML not found");
+        return res.text();
+      })
+      .then(function (text) {
+        var xml = new DOMParser().parseFromString(text, "application/xml");
+        var items = xml.querySelectorAll("project");
+        if (!items.length || xml.querySelector("parsererror")) return;
+
+        var list = document.getElementById("project-list");
+        list.textContent = "";
+
+        items.forEach(function (item, index) {
+          var get = function (tag) {
+            var node = item.querySelector(tag);
+            return node ? node.textContent.trim() : "";
+          };
+          var date = get("date");
+          var li = document.createElement("li");
+          li.className = "project";
+
+          var img = document.createElement("img");
+          img.src = get("image") || "assets/" + (index + 1) + ".png";
+          img.alt = get("title");
+
+          var time = document.createElement("time");
+          time.dateTime = date;
+          time.textContent = new Date(date + "T00:00:00").toLocaleDateString("en", {
+            month: "short",
+            year: "numeric"
+          });
+
+          var title = document.createElement("h3");
+          title.textContent = get("title");
+
+          var desc = document.createElement("p");
+          desc.textContent = get("description");
+
+          li.append(img, time, title, desc);
+          list.appendChild(li);
+        });
+      })
+      .catch(function () { /* keep the fallback list */ });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<passion_projects>
+
+  <project>
+    <title>Quiet Frames</title>
+    <image>assets/1.png</image>
+    <description>A collection of photos capturing ordinary scenes and small moments from everyday life.</description>
+    <date>2023-09-20</date>
+  </project>
+
+  <project>
+    <title>Rewind Archive</title>
+    <image>assets/2.png</image>
+    <description>A series of videos I have been making to preserve memories, moments, and milestones over time.</description>
+    <date>2024-10-02</date>
+  </project>
+
+  <project>
+    <title>Behind the Optics</title>
+    <image>assets/3.png</image>
+    <description>Photos taken while covering events as part of Optics, where I capture the people, energy, and highlights of each occasion.</description>
+    <date>2025-03-12</date>
+  </project>
+
+</passion_projects>

@@ -1,0 +1,330 @@
+/* ==========================================================
+   Rose Vanessa T. Chua: profile
+   Theme: camera / media, kept minimal.
+   Layout: Flexbox. Spacing: box model (padding, border, margin).
+   Font sizes: rem units.
+   One layout media query: max-width 600px (stacks on phones).
+   ========================================================== */
+
+:root {
+  --bg: #e7e8e9;
+  --ink: #1e1f21;
+  --muted: #55585c;
+  --border: #8b8f94;
+  --rec: #d63a2f;
+  --rec-text: #b3281d;
+
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+/* ---------- Page width ---------- */
+
+.hero,
+main {
+  width: 90%;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+main {
+  padding-bottom: 3rem;
+}
+
+a {
+  color: var(--ink);
+}
+
+a:hover {
+  color: var(--rec-text);
+}
+
+a:focus,
+.photo:focus {
+  outline: 2px solid var(--rec-text);
+  outline-offset: 3px;
+}
+
+/* ---------- Headings ---------- */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 4rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Hero: the viewfinder ---------- */
+
+.hero {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+/* Corner brackets, shared by the hero and the photo placeholder */
+.viewfinder,
+.photo {
+  --corner: 1.75rem;
+  --stroke: 2px;
+  background:
+    linear-gradient(var(--ink), var(--ink)) top left / var(--corner) var(--stroke) no-repeat,
+    linear-gradient(var(--ink), var(--ink)) top left / var(--stroke) var(--corner) no-repeat,
+    linear-gradient(var(--ink), var(--ink)) top right / var(--corner) var(--stroke) no-repeat,
+    linear-gradient(var(--ink), var(--ink)) top right / var(--stroke) var(--corner) no-repeat,
+    linear-gradient(var(--ink), var(--ink)) bottom left / var(--corner) var(--stroke) no-repeat,
+    linear-gradient(var(--ink), var(--ink)) bottom left / var(--stroke) var(--corner) no-repeat,
+    linear-gradient(var(--ink), var(--ink)) bottom right / var(--corner) var(--stroke) no-repeat,
+    linear-gradient(var(--ink), var(--ink)) bottom right / var(--stroke) var(--corner) no-repeat;
+}
+
+.viewfinder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 20rem;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.rec {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.75rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: var(--rec);
+  animation: rec-blink 1.6s steps(1, end) 4;
+}
+
+@keyframes rec-blink {
+  50% {
+    opacity: 0.15;
+  }
+}
+
+.tagline {
+  max-width: 32ch;
+  margin: 1.25rem 0 0;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--muted);
+}
+
+/* ---------- Sections (box model: margin, border, padding) ---------- */
+
+.section {
+  margin: 1.5rem 0;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+}
+
+.section p {
+  max-width: 60ch;
+  margin: 0;
+}
+
+.section p + p {
+  margin-top: 0.5rem;
+}
+
+/* ---------- About: photo next to bio (Flexbox) ---------- */
+
+.about {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.photo {
+  flex: 0 0 12rem;
+  height: 16rem;
+  padding: 0.5rem;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bio {
+  flex: 1;
+  min-width: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+/* ---------- Things I love ---------- */
+
+.love-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.love-list li {
+  padding: 0.25rem 0;
+}
+
+.love-list li::marker {
+  color: var(--rec-text);
+}
+
+/* ---------- Passion projects: the film strip (Flexbox) ---------- */
+
+.film {
+  background-color: var(--ink);
+  color: var(--bg);
+}
+
+/* sprocket holes along the top and bottom edge */
+.film::before,
+.film::after {
+  content: "";
+  display: block;
+  height: 1.15rem;
+  background-image: linear-gradient(to right, var(--bg) 0.7rem, transparent 0);
+  background-size: 1.4rem 0.5rem;
+  background-position: 0.35rem center;
+  background-repeat: repeat-x;
+}
+
+.film-frames {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: rgba(231, 232, 233, 0.3);
+}
+
+.project {
+  flex: 1 1 14rem;
+  padding: 1.5rem 1.25rem 1.75rem;
+  background-color: var(--ink);
+}
+
+.project img {
+  display: block;
+  width: 100%;
+  height: 12rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  background-color: var(--muted);
+}
+
+.project time {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: #b4b8bc;
+}
+
+.project p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ---------- Phones: stack the layout ---------- */
+
+@media (max-width: 600px) {
+  body {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    letter-spacing: 0.02em;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .viewfinder {
+    min-height: 14rem;
+    padding: 3rem 1.25rem 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1.05rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .about {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .photo {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 14rem;
+    height: 18rem;
+  }
+
+  .bio {
+    flex: 0 0 auto;
+    width: 100%;
+    font-size: 1.05rem;
+  }
+
+  .project {
+    flex-basis: 100%;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .rec {
+    animation: none;
+  }
+}
