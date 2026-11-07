@@ -6,8 +6,8 @@
     --rec: #d63a2f;
     --rec-text: #b3281d;
 
-    --font-display: "Oswald", "Arial Narrow", sans-serif;
-    --font-body: "IBM Plex Sans", Arial, sans-serif;
+    --font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    --font-body: "Source Sans 3", Arial, sans-serif;
 }
 
 * {
@@ -169,7 +169,7 @@ h3 {
 .bio {
     flex: 1;
     min-width: 0;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     line-height: 1.5;
 }
 
